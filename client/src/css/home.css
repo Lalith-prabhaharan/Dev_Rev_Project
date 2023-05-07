@@ -1,0 +1,64 @@
+
+.containe {
+  position:relative;
+  /* width: 100%; */
+}
+
+  .containe img {
+  /* width: 1380px; */
+  width: 100%;
+  height: 50%;
+  }
+
+  .containe .text-overlay {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: #18030f;
+  font-family:inter;
+  font-size: 24px;
+  text-align: center;
+  }
+
+  .home-but{
+    margin: 10px;
+    padding: 15px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    border-radius: 10px;
+    display: block;
+    border: 0px;
+    font-weight: 700;
+    box-shadow: 0px 0px 14px -7px #f09819;
+    background-image: linear-gradient(45deg, #0a0a0a 0%, #0d0c0b  51%, #FF512F  100%);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 80%;
+  }
+  
+  
+  .home-but:hover {
+    background-position: right center;
+    /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .home-but:active {
+    transform: scale(0.95);
+  }
+  @media screen and (max-width: 768px){
+      .Types_of_Events{
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 10px;
+      padding: 30px;
+  }
+  }
