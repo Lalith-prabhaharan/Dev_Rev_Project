@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { NavBar } from './NavBar';
 
 export const Signup = () => {
     const navigate=useNavigate();
@@ -13,7 +14,7 @@ export const Signup = () => {
         e.preventDefault();
         if(pass==cpass){
             const register=async()=>{
-                const response=await axios.post("http://localhost:8000/api/auth/signup",{
+                const response=await axios.post("https://cyan-cape-buffalo-suit.cyclic.app/api/auth/signup",{
                     username:name,
                     email:mail,
                     password:pass,
@@ -32,6 +33,7 @@ export const Signup = () => {
     }
   return (
     <div>
+        <NavBar/>
         <div className="LoginPageContainer">
         <div className="LoginPageInnerContainer">
             <div className="LoginFormContainer">

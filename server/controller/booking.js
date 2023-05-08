@@ -21,3 +21,15 @@ export const getmyBook =async(req,res,next)=>{
         res.status(200).json({"msg":"failed"})
     }
 }
+
+export const getidBook =async(req,res,next)=>{
+    try{
+        const id=req.params.id
+        const response=await Book.find({flight_id:id})
+        res.status(200).json({"msg":"sucess","data":response})    
+    }
+    catch(err){
+        console.log(err)
+        res.status(200).send("error",err)
+    }
+}

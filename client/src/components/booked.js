@@ -5,18 +5,14 @@ import "../css/booked.css"
 export const Booked = () => {
     const auth=useAuth()
     const[list,setList]=useState([]);
-    useEffect(() => {
-    axios.get("http://localhost:8000/api/bookplane/get")
+    const showmybook=() => {
+    axios.get("https://cyan-cape-buffalo-suit.cyclic.app/api/bookplane/get")
     .then((response)=>{
-        const data=response.data.data
-        data.forEach(element => {
-          if(element.user===auth.user){
-            // list.push(element)
-            setList(prev=> [...prev,element])
-          }
-        }); 
-      })
-    },[])
+      const data=response.data.data
+      const filter=data.filter((element)=>element.user=== localStorage.getItem("username") )
+      setList(filter)
+    })    
+  }
     const li= list.map((x,index)=>{
       return(
         <div key={index} class="container">
@@ -36,8 +32,8 @@ export const Booked = () => {
           <div class="smdetail">{x.name}</div>
         </div>
         <div class="gate">
-          <div class="item">gate</div>
-          <div class="lgdetail">l22</div>
+          <div class="item">Airways</div>
+          <div class="lgdetail">{x.flight_name}</div>
         </div>
         <div class="flight">
           <div class="item">flight</div>
@@ -79,9 +75,11 @@ export const Booked = () => {
       )
     })
   return (
-   
+   <div>
+    <button onClick={showmybook}> Show My Bookings</button>
     <div className='full'>
       {li}
     </div>
+   </div>
     )
 }

@@ -17,7 +17,6 @@ const bookSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-
   flight_from:{
     type: String,
     required: true
@@ -49,13 +48,15 @@ bookSchema.pre("save",async function(next){
     let response=await Aeroplane.find({flight_id:this.flight_id});
     console.log(response);
     response=response[0];
-    if(response.remaining<1){
-        prompt("Slot full");
-    }
     response.remaining= response.remaining-this.nop;
-    const update=await Aeroplane.findOneAndUpdate({flight_id:this.flight_id},response,{
+    if(response.remaining<1){
+      console.log("Slot is Full")
+    }
+    else{
+      const update=await Aeroplane.findOneAndUpdate({flight_id:this.flight_id},response,{
         new:true,
-    })
+      })
+    }
 })
 
 export default mongoose.model('Book', bookSchema);

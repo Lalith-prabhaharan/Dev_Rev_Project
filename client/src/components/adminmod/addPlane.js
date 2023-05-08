@@ -16,7 +16,7 @@ export const AddPlane = () => {
   const submit=(e)=>{
       e.preventDefault();
       const addPlane=async()=>{
-        const response=await axios.post("http://localhost:8000/api/plane/add",{
+        const response=await axios.post("https://cyan-cape-buffalo-suit.cyclic.app/api/plane/add",{
             flight_id:id,
             name:planename,
             from:from,

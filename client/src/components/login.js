@@ -3,6 +3,7 @@ import {Link, useLocation,useNavigate} from 'react-router-dom'
 import "../css/login.css"
 import axios from "axios"
 import { useAuth } from '../utils/Authentication';
+import { NavBar } from './NavBar';
 export const Login = () => {
     const navigate=useNavigate()
     const auth=useAuth()
@@ -22,7 +23,7 @@ export const Login = () => {
                 }
             }
             else{
-            const response=await axios.post("http://localhost:8000/api/auth/login",{
+            const response=await axios.post("https://cyan-cape-buffalo-suit.cyclic.app/api/auth/login",{
                 email:mail,
                 password:pass,
             })
@@ -30,6 +31,10 @@ export const Login = () => {
             if(response.data.msg==="sucess"){
                 alert("success")
                 console.log(response.data.data[0].username);
+                localStorage.setItem("mail",response.data.data[0].email);
+                localStorage.setItem("password",response.data.data[0].password);
+                localStorage.setItem("username",response.data.data[0].username);
+                localStorage.setItem("contact",response.data.data[0].contact);
                 auth.login(response.data.data[0].username,response.data.data[0].contact);
                 setFlag(1)
                 navigate(location.state?location.state.path:"/",{replace:true});
@@ -45,6 +50,7 @@ export const Login = () => {
     }
     return (
     <div>
+        <NavBar/>
         <div className="LoginPageContainer">
         <div className="LoginPageInnerContainer">
         <div className="ImageContianer">

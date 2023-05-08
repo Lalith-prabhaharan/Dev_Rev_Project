@@ -5,7 +5,7 @@ import { useAuth } from './Authentication';
 const RequiredAuth = (props) => {
   const location=useLocation();
   const auth=useAuth();
-  if(!auth.user){
+  if(!localStorage.getItem("mail")){
     return <Navigate to="/signup" state={{path:location.pathname}} />
   }
   else{

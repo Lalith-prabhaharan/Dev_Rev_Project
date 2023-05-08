@@ -13,6 +13,10 @@ export const AuthenticationProvider = (props) => {
     }
     const logout=()=>{
         setUser('')
+        localStorage.removeItem("mail")
+        localStorage.removeItem("password")
+        localStorage.removeItem("username")
+        localStorage.removeItem("contact")
         navigate('/login')
     }
 

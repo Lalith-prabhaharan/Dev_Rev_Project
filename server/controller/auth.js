@@ -3,7 +3,7 @@ export const signup=async(req,res,next)=>{
     try{
         const newPassenger=new passengers(req.body)
         await newPassenger.save();
-        res.status(200).send(newPassanger);
+        res.status(200).send(newPassenger);
     }
     catch(err){
         next(err);

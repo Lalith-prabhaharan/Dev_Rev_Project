@@ -48,18 +48,7 @@ export const NavBar=()=> {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink
-                exact
-                to="/contactus"
-                activeClassName="active"
-                className="nav-links"
-               onClick={click ? handleClick : null}
-              >
-                Contact Us
-              </NavLink>
-            </li>
-            <li className="nav-item">
-            {auth.user ?
+            {localStorage.getItem("mail")?
              <NavLink exact to="/profile" activeClassName="active" className="nav-links" onClick={click ? handleClick : null}>Profile</NavLink>
              : <NavLink ecxact to="/login"  activeClassName="active"className="nav-links" onClick={click ? handleClick : null} >Login</NavLink>}
              </li>

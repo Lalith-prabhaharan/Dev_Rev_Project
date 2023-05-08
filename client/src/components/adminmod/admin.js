@@ -33,6 +33,16 @@ export const Admin = () => {
                     </NavLink>
                     
                 </li>
+               
+                <li class="has-subnav">
+                    <NavLink to='showbooking'>
+                    <i class="fa fa-plane" aria-hidden="true"></i>
+                        <span class="nav-text">
+                           Show Bookings
+                        </span>
+                    </NavLink>
+                    
+                </li>
                 {/* <li class="has-subnav">
                     <a href="#">
                        <i class="fa fa-comments fa-2x"></i>

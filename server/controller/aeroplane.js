@@ -62,7 +62,7 @@ export const searchtimeAeroplane= async(req,res)=>{
     try{
         const getName = req.params.id
         console.log(getName);
-       const response= await Aeroplane.find({arrival:{$lte: getName} })
+       const response= await Aeroplane.find({arrival:{$lte: getName},departure:{$gte:getName} })
        console.log(response)
        
        res.status(200).json({"msg":"sucess","data":response})    

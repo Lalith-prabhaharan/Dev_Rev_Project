@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../utils/Authentication'
 import { useLocation } from 'react-router-dom'
 import axios from "axios"
+import { NavBar } from './NavBar'
 export const Book = () => {
   const location=useLocation()
   const {data}=location.state;
@@ -14,6 +15,7 @@ export const Book = () => {
   const [id, setid] = useState("")
   const[nop,setnop]=useState("")
   const[date,setdate]=useState("")
+  const[no,setno]=useState("")
   useEffect(() => {
     setid(data.flight_id)
   }, [])
@@ -21,16 +23,17 @@ export const Book = () => {
     const submit=(e)=>{
         e.preventDefault();
         const addSlot=async()=>{
-            const response= axios.post("http://localhost:8000/api/bookplane/booking",{
-            user:auth.user,
+            const response= axios.post("https://cyan-cape-buffalo-suit.cyclic.app/api/bookplane/booking",{
+            user:localStorage.getItem("username"),
             flight_id:id,
             name:name,
+            flight_name:data.name,
             flight_from:data.from,
             flight_to:data.to,
             mail:mail,
             nop:nop,
             date:date,
-            phone:auth.contact
+            phone:no
         }).then(
           navigate('/'),
           response=>console.log(response))
@@ -41,6 +44,7 @@ export const Book = () => {
   }
 return(
     <div>
+      <NavBar/> 
       <form onSubmit={submit}>
         
         <h1 className='addhead'>Book Your Ticket For {data.name}</h1>
@@ -63,7 +67,7 @@ return(
           <input type="date" className="addhotelinp" onChange={(e)=>setdate(e.target.value)}   />
          
           <label >Phone:</label>
-          <input type="text" className="addhotelinp" value={auth.contact}  />
+          <input type="text" className="addhotelinp" onChange={(e)=>setno(e.target.value)}  />
         </fieldset>
         
         <button class="button-1" role="button">Add Centre</button>

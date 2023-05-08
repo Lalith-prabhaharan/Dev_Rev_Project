@@ -3,11 +3,12 @@ import axios from 'axios'
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import "../css/getcentre.css"
+import { NavBar } from './NavBar';
 
 export const GetAeroplanes = () => {
     const [list, setlist] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:8000/api/plane/get")
+        axios.get("https://cyan-cape-buffalo-suit.cyclic.app/api/plane/get")
         .then((response)=>{
           const data=response.data.data
           // console.log(response)
@@ -18,8 +19,8 @@ export const GetAeroplanes = () => {
     }, [])
 
     const handleChange=(e)=>{
-      const id=e.target.value
-    fetch(`http://localhost:8000/api/plane/get/${id}`)
+    const id=e.target.value
+    fetch(`https://cyan-cape-buffalo-suit.cyclic.app/api/plane/get/${id}`)
     .then((res) => res.json())
     .then((response) => {
       if(response.length==0){alert("No such data is found")}
@@ -29,7 +30,7 @@ export const GetAeroplanes = () => {
 
     const searchdate=(e)=>{
       const id=e.target.value
-      fetch(`http://localhost:8000/api/plane/getdate/${id}`)
+      fetch(`https://cyan-cape-buffalo-suit.cyclic.app/api/plane/getdate/${id}`)
       .then((res) => res.json())
       .then((response) => {
       if(response.length==0){alert("No such data is found")}
@@ -39,7 +40,7 @@ export const GetAeroplanes = () => {
 
     const searchtime=(e)=>{
       const id=e.target.value
-      fetch(`http://localhost:8000/api/plane/gettime/${id}`)
+      fetch(`https://cyan-cape-buffalo-suit.cyclic.app/api/plane/gettime/${id}`)
       .then((res) => res.json())
       .then((response) => {
        setlist(response.data)
@@ -67,6 +68,7 @@ export const GetAeroplanes = () => {
   );
   return (
     <div>
+      <NavBar/>
       <div className="Input">
           <input type='text' className='Input-text' placeholder='Search Flights here...' onChange={handleChange} /> <br></br>
           <input type='date' className='' onChange={searchdate} placeholder='Search Available Dates...'  />

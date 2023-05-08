@@ -12,12 +12,13 @@ import { Showplanes } from './components/adminmod/showplane';
 import { Book } from './components/book';
 import { NavBar } from './components/NavBar';
 import { Home } from './components/home';
+import { ShowBook } from './components/adminmod/showBook';
 
 function App() {
   return (
     <div className="App">
       <AuthenticationProvider>
-        <NavBar/>
+        {/* <NavBar/> */}
         <Routes>
           <Route exact path='/getplane' element={<RequiredAuth><GetAeroplanes/></RequiredAuth>}></Route>
           <Route  path='/booking' element={<RequiredAuth><Book/></RequiredAuth>}/>
@@ -26,6 +27,7 @@ function App() {
           <Route  path='admin' element={<Admin/>}>
           <Route path='addplane' element={<AddPlane/>}></Route>
           <Route path='showplane' element={<Showplanes/>}></Route>
+          <Route path='showbooking' element={<ShowBook/>}></Route>
           </Route>
           <Route exact path='/signup' element={<Signup/>}></Route>
           <Route exact path='/login' element={<Login/>}></Route>

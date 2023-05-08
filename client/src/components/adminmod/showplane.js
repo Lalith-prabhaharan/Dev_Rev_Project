@@ -7,7 +7,7 @@ import "../../css/getcentre.css"
 export const Showplanes = () => {
     const [list, setlist] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:8000/api/plane/get")
+        axios.get("https://cyan-cape-buffalo-suit.cyclic.app/api/plane/get")
         .then((response)=>{
           const data=response.data.data
           console.log(response)
@@ -17,10 +17,10 @@ export const Showplanes = () => {
         .catch((err)=>console.log(err))
     }, [])
     const deleted=(event)=>{
-      axios.delete(`http://localhost:8000/api/plane/${event.target.value}`).then((res)=>{
+      axios.delete(`https://cyan-cape-buffalo-suit.cyclic.app/api/plane/${event.target.value}`).then((res)=>{
         alert("Deleted successfully")
       }) .catch((err)=>console.log(err));
-      axios.get("http://localhost:8000/api/plane/get")
+      axios.get("https://cyan-cape-buffalo-suit.cyclic.app/api/plane/get")
         .then((response)=>{
           const data=response.data.data
           console.log(response)
